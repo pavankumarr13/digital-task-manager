@@ -3,7 +3,7 @@ import axios from "axios";
 
 // Create an instance of axios
 const instance = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL, // Your API base URL
+  baseURL: "", // Your API base URL
 });
 
 // Add a request interceptor

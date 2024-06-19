@@ -15,6 +15,7 @@ const UserAvatar = () => {
   const navigate = useNavigate();
 
   const logoutHandler = () => {
+    console.log("logout clicked");
     dispatch(logout());
     navigate("/login");
   };
