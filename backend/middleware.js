@@ -1,6 +1,9 @@
 import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
 
-const SECRET_KEY = "af891bf8da99d19ba13ed08024";
+dotenv.config();
+
+const SECRET_KEY = process.env.SECRET_KEY;
 function verify(req, res, next) {
   console.log("inside verify token");
   try {
