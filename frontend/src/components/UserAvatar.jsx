@@ -18,6 +18,7 @@ const UserAvatar = () => {
     console.log("logout clicked");
     dispatch(logout());
     navigate("/login");
+    localStorage.clear();
   };
 
   return (
