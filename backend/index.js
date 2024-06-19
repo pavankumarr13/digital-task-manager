@@ -1,3 +1,4 @@
+import path from "path";
 import express from "express";
 import authRouter from "./routes/authRouter.js";
 import taskRouter from "./routes/taskRouter.js";
@@ -6,6 +7,8 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
+const __dirname = path.resolve();
+
 const port = process.env.PORT || 5000;
 
 // Express Application
@@ -13,10 +16,6 @@ const app = express();
 app.use(express.json());
 // cors
 
-// Setting View Engine
-// How to setup multiple folder view
-// app.set('view engine','ejs');
-// app.set('views','./views/User');
 // Middleware
 app.use(
   express.urlencoded({
@@ -34,6 +33,12 @@ app.use(
 // Routes
 app.use("/", authRouter);
 app.use("/task/", taskRouter);
+
+app.use(express.static(path.join(__dirname, "/frontend/dist")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
+});
 
 app.listen(port, (err) => {
   if (err) {
