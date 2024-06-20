@@ -88,6 +88,10 @@ const Register = () => {
                 className="w-full rounded-full"
                 register={register("password", {
                   required: "Password is required!",
+                  minLength: {
+                    value: 4,
+                    message: "Password must have at least 4 characters",
+                  },
                 })}
                 error={errors.password ? errors.password.message : ""}
               />
@@ -99,6 +103,10 @@ const Register = () => {
                 className="w-full rounded-full"
                 register={register("confirmPassword", {
                   required: "Confirm Password is required!",
+                  minLength: {
+                    value: 4,
+                    message: "Password must have at least 4 characters",
+                  },
                   validate: (value) =>
                     value === password || "The passwords do not match",
                 })}
