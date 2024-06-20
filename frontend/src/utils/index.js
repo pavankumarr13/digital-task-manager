@@ -26,7 +26,9 @@ export function dateFormatter(dateString) {
 
 export function getInitials(fullName) {
   const names = fullName.split(" ");
-
+  if (!fullName.includes(" ")) {
+    return fullName.charAt(0).toUpperCase();
+  }
   if (names.length === 1) {
     // For names without spaces, return the first initial only
     return names[0][0].toUpperCase();

@@ -50,7 +50,10 @@ const Navbar = () => {
         {/* <NotificationPanel /> */}
         <UserAvatar />
         <div className="p-2 border border-red-500 rounded-full">
-          <LuLogOut className="text-red-500 text-xl " onClick={handleLogout} />
+          <LuLogOut
+            className="text-red-500 text-xl cursor-pointer font-bold "
+            onClick={handleLogout}
+          />
         </div>
       </div>
     </div>
