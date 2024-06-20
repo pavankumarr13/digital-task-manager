@@ -5,7 +5,7 @@ import { IoLogOutOutline } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getInitials } from "../utils";
-import { logout } from "../redux/slices/authSlice";
+import { logout, setLoggedIn } from "../redux/slices/authSlice";
 
 const UserAvatar = () => {
   const [open, setOpen] = useState(false);
@@ -15,8 +15,9 @@ const UserAvatar = () => {
   const navigate = useNavigate();
 
   const logoutHandler = () => {
-    console.log("logout clicked");
+    console.log("logout clicked in user avatar");
     dispatch(logout());
+    dispatch(setLoggedIn(false));
     navigate("/login");
     localStorage.clear();
   };

@@ -1,15 +1,26 @@
 import React from "react";
 import { MdOutlineSearch } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
-import { setOpenSidebar } from "../redux/slices/authSlice";
+import { logout, setLoggedIn, setOpenSidebar } from "../redux/slices/authSlice";
 import UserAvatar from "./UserAvatar";
+import { LuLogOut } from "react-icons/lu";
 
 // import UserAvatar from "./UserAvatar";
 // import NotificationPanel from "./NotificationPanel";
 
 const Navbar = () => {
-  const { user, isSidebarOpen } = useSelector((state) => state.auth);
+  const { user, isLoggedIn, isSidebarOpen } = useSelector(
+    (state) => state.auth
+  );
   const dispatch = useDispatch();
+
+  const handleLogout = () => {
+    console.log("logout clicked");
+    dispatch(logout());
+    dispatch(setLoggedIn(false));
+    navigate("/login");
+    localStorage.clear();
+  };
 
   return (
     <div className="flex justify-between items-center bg-white px-4 py-3 2xl:py-4 sticky z-10 top-0">
@@ -37,8 +48,10 @@ const Navbar = () => {
 
       <div className="flex gap-2 items-center">
         {/* <NotificationPanel /> */}
-
         <UserAvatar />
+        {/* <div className="p-2 border border-red-500 rounded-full">
+          <LuLogOut className="text-red-500 text-xl " onClick={handleLogout} />
+        </div> */}
       </div>
     </div>
   );

@@ -17,10 +17,10 @@ import Footer from "./components/Footer/Footer";
 import NotFound from "./pages/NotFound/NotFound";
 
 function Layout() {
-  const { user } = useSelector((state) => state.auth);
+  const { user, isLoggedIn } = useSelector((state) => state.auth);
   const location = useLocation();
 
-  return user ? (
+  return user && isLoggedIn ? (
     <div className="w-full h-screen flex flex-col md:flex-row">
       <div className="w-1/3  md:w-1/4 h-screen bg-white sticky top-0 hidden md:block">
         <Sidebar />

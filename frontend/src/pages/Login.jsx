@@ -5,12 +5,13 @@ import Spinner from "../components/Spinner/Spinner";
 import Input from "../components/Input";
 import Button from "../components/Button";
 import { useDispatch, useSelector } from "react-redux";
-import { setCredentials } from "../redux/slices/authSlice";
+import { setCredentials, setLoggedIn } from "../redux/slices/authSlice";
 import axios from "../services/axiosConfig";
 import { toast } from "sonner";
+import { set } from "mongoose";
 
 const Login = () => {
-  const { user } = useSelector((state) => state.auth);
+  const { user, isLoggedIn } = useSelector((state) => state.auth);
   const {
     register,
     handleSubmit,
@@ -34,6 +35,7 @@ const Login = () => {
         localStorage.setItem("token", token);
         toast.success("Login successful");
         dispatch(setCredentials(response.data.user));
+        dispatch(setLoggedIn(true));
         console.log(user);
         //navigate("/dashboard");
       } else {
@@ -49,8 +51,8 @@ const Login = () => {
     if (location.state?.message) {
       toast.error(location.state.message);
     }
-    user && navigate("/dashboard");
-  }, [user, location]);
+    user && isLoggedIn && navigate("/dashboard");
+  }, [user, location, isLoggedIn]);
 
   return (
     <div className="w-full min-h-screen flex items-center justify-center flex-col lg:flex-row bg-[#f3f4f6]">
