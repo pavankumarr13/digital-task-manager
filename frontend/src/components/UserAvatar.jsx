@@ -69,7 +69,7 @@ const UserAvatar = () => {
                   )}
                 </MenuItems>
 
-                <MenuItems>
+                {/* <MenuItems>
                   {({ active }) => (
                     <button
                       onClick={logoutHandler}
@@ -79,7 +79,7 @@ const UserAvatar = () => {
                       Logout
                     </button>
                   )}
-                </MenuItems>
+                </MenuItems> */}
               </div>
             </MenuItems>
           </Transition>

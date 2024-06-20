@@ -49,9 +49,9 @@ const Navbar = () => {
       <div className="flex gap-2 items-center">
         {/* <NotificationPanel /> */}
         <UserAvatar />
-        {/* <div className="p-2 border border-red-500 rounded-full">
+        <div className="p-2 border border-red-500 rounded-full">
           <LuLogOut className="text-red-500 text-xl " onClick={handleLogout} />
-        </div> */}
+        </div>
       </div>
     </div>
   );
